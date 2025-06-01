@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}가져와{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- 공통 네비게이션 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+  <div class="container">
+    <!-- 햄버거 버튼 -->
+    <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#categoryMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand fs-2 fw-bold" href="/">가져와</a>
+
+    <div class="collapse navbar-collapse" id="categoryMenu">
+      <ul class="navbar-nav me-auto">
+        {% for category in categories %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'product_list' %}?category={{ category.id }}">{{ category.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="ms-auto">
+      <a href="/users/signup/" class="text-decoration-none me-3">회원가입</a>
+      <a href="/users/login/" class="text-decoration-none">로그인</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 개별 페이지 콘텐츠 들어오는 곳 -->
+<div class="container my-5">
+  {% block content %}{% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
