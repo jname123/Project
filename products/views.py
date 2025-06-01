@@ -67,4 +67,12 @@ def product_detail(request, pk):
 def category_view(request, category_name):
     products = Product.objects.filter(category__name=category_name)
     context = {'products': products, 'category_name': category_name}
-    return render(request, 'products/category_page.html', context)
+    return render(request, 'category/category_page.html', context)
+
+def category_view(request, category_name):
+    products = Product.objects.filter(category__name=category_name)
+    context = {
+        'products': products,
+        'category_name': category_name,
+    }
+    return render(request, 'category/category_page.html', context)  # 또는 'products/category_page.html'
