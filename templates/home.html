@@ -10,14 +10,20 @@
       <div class="container">
         <a class="navbar-brand" href="/">가져와</a>
         <div class="ms-auto">
-          <a href="/users/signup/" class="btn btn-outline-primary me-2">회원가입</a>
-          <a href="/users/login/" class="btn btn-primary">로그인</a>
+          <a href="/users/signup/" class="text-decoration-underline text-dark fw-semibold me-4">회원가입</a>
+          <a href="/users/login/" class="text-decoration-underline text-dark fw-semibold">로그인</a>
         </div>
       </div>
     </nav>
     <div class="container py-5 text-center">
         <h1 class="display-4 mb-4">🎉 중고거래 사이트에 오신 걸 환영합니다!</h1>
         <p class="lead mb-4">원하는 상품을 사고, 팔고, 문의해보세요.</p>
+        <form action="/products/" method="get" class="mb-4">
+          <div class="input-group input-group-lg w-75 mx-auto">
+            <input type="text" name="q" class="form-control" placeholder="상품을 검색해보세요..." aria-label="Search">
+            <button class="btn btn-outline-dark" type="submit">검색</button>
+          </div>
+        </form>
         <div class="d-grid gap-3 col-6 mx-auto">
             <a href="/products/" class="btn btn-primary btn-lg">📦 상품 목록 보기</a>
             <a href="/inquiries/my/" class="btn btn-outline-secondary btn-lg">💬 내 문의 내역 보기</a>
