@@ -1,3 +1,4 @@
+import form
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -5,16 +6,23 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 # Create your views here.
 # 회원가입 view
-def signup_view(request):
+from django.shortcuts import render, redirect
+from .forms import SignUpForm
+
+
+def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('/')
+            form.save()
+            return redirect('login')  # 회원가입 후 로그인 페이지로 이동
     else:
-            form = UserCreationForm()
-    return render(request, 'users/signup.html', {'form': form})
+        form = SignUpForm()
+
+    return render(request, 'myapp/signup.html', {'form': form})
+
+
+{'form': form})
 
 # 로그인 view
 def login_view(request):
