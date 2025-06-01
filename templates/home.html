@@ -24,6 +24,12 @@
             <button class="btn btn-outline-dark" type="submit">검색</button>
           </div>
         </form>
+        <h2>카테고리 목록</h2>
+<ul>
+  {% for category in categories %}
+    <li><a href="{% url 'product_list' %}?category={{ category.id }}">{{ category.name }}</a></li>
+  {% endfor %}
+</ul>
         <div class="d-grid gap-3 col-6 mx-auto">
             <a href="/products/" class="btn btn-primary btn-lg">📦 상품 목록 보기</a>
             <a href="/inquiries/my/" class="btn btn-outline-secondary btn-lg">💬 내 문의 내역 보기</a>
