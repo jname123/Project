@@ -1,0 +1,15 @@
+<h1>{{ product.title }}</h1>
+<p>가격: {{ product.price }}원</p>
+<p>설명: {{ product.description }}</p>
+<p>등록일: {{ product.created_at }}</p>
+<p>판매자: {{ product.seller.username }}</p>
+
+<a href = "{% url 'product_update' product.pk %}">수정</a> |
+<a href = "{% url 'product_delete' product.pk %}">삭제</a> |
+<a href = "{% url 'product_list' %}">목록으로</a>
+
+{% if user.is_authenticated and user != product.seller %}
+    <form action = "{% url 'send_inquiry' product.pk %}" method = "get">
+        <button type = "submit"> 문의하기 </button>
+    </form>
+{% endif %}

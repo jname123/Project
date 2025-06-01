@@ -1,0 +1,25 @@
+<h1>상품 목록</h1>
+
+<form method = "get" action = "{% url 'product_list' %}">
+    <select name = "category">
+        <option value="">전체 카테고리</option>
+        {% for cat in categories %}
+            <option value = "{{ cat.id }}" {% if cat.id|stringformat:"s" == selected_category %}selected{% endif %}>
+            {{ cat.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <input type = "text" name = "q" placeholder="상품명 검색" value = "{{ query|default_if_none:'' }}">
+    <button type = "submit">검색</button>
+</form>
+
+<a href = "{%  url 'product_create' %}">상품 등록</a>
+<ul>
+    {% for product in products %}
+        <li>
+            <a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a> - {{ product.price }}원
+        </li>
+    {% empty %}
+        <li>상품이 없습니다.</li>
+    {% endfor %}
+</ul>
