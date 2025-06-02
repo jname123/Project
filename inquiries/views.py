@@ -17,4 +17,12 @@ def send_inquiry(request, product_id):
         )
         return redirect('product_detail', pk=product_id)
 
-    return render(request, 'inquiries/send_inquiry.html', {'product': product})
+    return render(request, 'inquiries/my_inquiries.html', {'product': product})
+
+def send_inquiry(request, product_id):
+    # ... 기존 구현 ...
+    pass
+def my_inquiries(request):
+    # 예시: 본인의 문의 목록을 보여주는 뷰
+    return render(request, 'inquiries/my_inquiries.html')
+

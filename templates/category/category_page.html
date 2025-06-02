@@ -14,7 +14,11 @@
             {% for product in products %}
                 <div class="col">
                     <div class="card h-100">
-                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                          {% if product.image %}
+                         <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                            {% else %}
+        <img src="/static/images/no-image.png" class="card-img-top" alt="이미지 없음">
+                {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">{{ product.description|truncatewords:20 }}</p>
