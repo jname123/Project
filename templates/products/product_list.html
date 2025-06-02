@@ -30,7 +30,7 @@
       </div>
     </nav>
 <!--카테고리 필터-->
-<form method = "get" action = "{% url 'product_list' %}">
+<form method = "get" action = "{% url 'products:products_list' %}">
     <select name = "category">
         <option value="">전체 카테고리</option>
         {% for cat in categories %}
@@ -43,13 +43,18 @@
     <button type = "submit">검색</button>
 </form>
 
-<a href = "{%  url 'product_create' %}">상품 등록</a>
+<a href = "{%  url 'products:product_create' %}">상품 등록</a>
 <ul>
-    {% for product in products %}
-        <li>
-            <a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a> - {{ product.price }}원
-        </li>
-    {% empty %}
-        <li>상품이 없습니다.</li>
-    {% endfor %}
+{% for product in products %}
+  <div class="product">
+    <h2>{{ product.name }}</h2>
+    {% if product.image %}
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width:200px;">
+    {% else %}
+      <p>사진이 없습니다.</p>
+    {% endif %}
+    <!-- 기타 정보 표시 -->
+  </div>
+{% endfor %}
+
 </ul>

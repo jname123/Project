@@ -12,7 +12,7 @@ def product_create(request):
             product = form.save(commit=False)
             product.seller = request.user  # 판매자 지정
             product.save()
-            return redirect('products_list')  # 메인 페이지로 이동
+            return redirect('products:products_list')  # 메인 페이지로 이동
     else:
         form = ProductForm()
     return render(request, 'products/product_form.html', {'form': form})
