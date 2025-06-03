@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2>{{ user.username }}님의 마이페이지</h2>
+  <hr>
+  <h4>내가 등록한 상품</h4>
+  <ul>
+    {% for product in my_products %}
+      <li>
+        <a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a> - {{ product.price }}원
+      </li>
+    {% empty %}
+      <li>등록한 상품이 없습니다.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

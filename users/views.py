@@ -1,3 +1,4 @@
+from products.models import Product
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -31,3 +32,7 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
         return redirect('/')
+
+def mypage_view(request):
+    my_products = Product.objects.filter(seller=request.user)
+    return render(request, 'users/mypage.html', {'my_products': my_products})

@@ -23,7 +23,10 @@
 
         <div class="ms-auto">
           <a href="/users/signup/" class="text-decoration-underline text-dark fw-semibold me-4">회원가입</a>
-          <a href="/users/login/" class="text-decoration-underline text-dark fw-semibold">로그인</a>
+          <a href="/users/login/" class="text-decoration-underline text-dark fw-semibold me-4">로그인</a>
+            {% if user.is_authenticated %}
+          <a href="/users/mypage/" class="text-decoration-underline text-dark fw-semibold me-4">마이페이지</a>
+            {% endif %}
         </div>
       </div>
     </nav>
