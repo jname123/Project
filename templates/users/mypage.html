@@ -7,7 +7,7 @@
   <ul>
     {% for product in my_products %}
       <li>
-        <a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a> - {{ product.price }}원
+        <a href="{% url 'products:product_detail' product.pk %}">{{ product.title }}</a>
       </li>
     {% empty %}
       <li>등록한 상품이 없습니다.</li>
